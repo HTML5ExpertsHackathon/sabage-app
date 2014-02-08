@@ -3,24 +3,23 @@
  */
 
 $(document).ready(function(){
-
+    UI.init();
+    
     //LocationManager
-    var locationM = new Location.manager();
 
     //LocationManagerを初期化
-    locationM.init('#gmap');
 
     //自分の位置を表示開始する
-    locationM.setMyMarker();
+    // locationM.setMyMarker();
 
 
-    var other = {
-        markerObject: null,
-        latitude: 36.3005131,
-        longitude: 138.8473839
-    }
+    // var other = {
+    //     markerObject: null,
+    //     latitude: 36.3005131,
+    //     longitude: 138.8473839
+    // }
 
     //相手の位置を表示する
-    locationM.setOtherMarker(other);
+    // locationM.setOtherMarker(other);
 
 });

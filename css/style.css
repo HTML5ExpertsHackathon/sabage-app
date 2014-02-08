@@ -21,9 +21,9 @@ h4 {
 }
 
 label {
-	margin-top: 50px;
 	font-size: 30px;
 }
+
 input {
 	background-color: rgba(0,0,0,3);
 	text-align: center;
@@ -54,6 +54,10 @@ input {
 	/*-webkit-transition: opacity 1s ease-in;*/
 }
 
+.row {
+	position: relative;
+	top: 30px;
+}
 .active{
 	opacity: 1;
 	display: block;
@@ -106,11 +110,13 @@ input {
 }
 
 #login-button{
-	margin-top: 100px;
+	position: relative;
+	top: 50px;
 }
 
 #speak-button{
-	margin-top: 100px;
+	position: relative;
+	top: 100px;
 }
 
 .dialog {
@@ -132,10 +138,11 @@ input {
 	position: relative;
 	top: 5%;
 	border-radius: 50%;
-	border: #333333 solid 10px;
+	/*border: #333333 solid 10px;*/
 	background: -webkit-radial-gradient(50%, 0%, 50% 5px, #aaa 0%, white 100%);
 	overflow: hidden;
 	z-index: 50;
+-webkit-mask-image: url(data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAIAAACQd1PeAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAA5JREFUeNpiYGBgAAgwAAAEAAGbA+oJAAAAAElFTkSuQmCC);
 
 }
 
@@ -145,6 +152,9 @@ input {
 	width: 50%;
 	background-image: url("../resource/imgs/scan.png");
 	background-size: 100%;
+	position: absolute;
+	left: 0;
+	top: 0;
 	/*border-right: white solid 3px;*/
 	/*background-image: -webkit-gradient(
 		linear,
@@ -158,7 +168,7 @@ input {
 	-webkit-animation-iteration-count: infinite;
 	-webkit-animation-timing-function: linear;
 	-webkit-transform-origin:100% 100%;
-	z-index: -1;
+	z-index: 100;
 	position: relative;
 	padding: 0;
 	margin: 0;
@@ -226,7 +236,10 @@ input {
 }
 
 #gmap {
-    width: 100%;
-    height: 100%;
-    position: relative;
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: -1;
+    border-radius: 50%;
+    overflow: hidden;
 }
