@@ -1,0 +1,225 @@
+body, html{
+	height: 100%;
+	padding: 0;
+	margin: 0;
+	font-family: 'Black Ops One', cursive;
+	text-align: center;
+}
+
+body{
+	background-image:url('../resource/imgs/steel-2.jpg');
+	background-size: 1000px;
+}
+
+h1 {
+	margin: 0;
+	font-size: 45px;
+}
+h4 {
+	font-size: 20px;
+}
+
+label {
+	margin-top: 50px;
+	font-size: 30px;
+}
+input {
+	background-color: rgba(0,0,0,3);
+	text-align: center;
+}
+
+#screen-container{
+	height: 100%;
+	color: white;
+}
+
+#title-screen{
+	text-align: center;
+}
+#title-screen h1{
+	position: relative;
+	top: 50px;
+}
+#title-screen h4 {
+	position: relative;
+	top: 50%;
+}
+.screen {
+	position: relative;
+	top: 0px;
+	left: 0px;
+	opacity: 0;
+	/*opacity: 0;*/
+	/*-webkit-transition: opacity 1s ease-in;*/
+}
+
+.active{
+	opacity: 1;
+	display: block;
+	height: 100%;
+	width: 100%;
+}
+
+
+.title {
+	width: 70%;
+	font-size: 45px;
+}
+
+.inset {
+  /*font-family: Rockwell, Georgia, "Times New Roman", Times, serif;*/
+  font-size: 50px;
+  color: inset hsla(0,0%,15%,  1) 0  0px 0px 4px, /* border */
+    inset hsla(0,0%,15%, .8) 0 -1px 5px 4px, /* soft SD */
+    inset hsla(0,0%,0%, .25) 0 -1px 0px 7px, /* bottom SD */
+    inset hsla(0,0%,100%,.7) 0  2px 1px 7px, /* top HL */
+    
+    hsla(0,0%, 0%,.15) 0 -5px 6px 4px, /* outer SD */
+    hsla(0,0%,100%,.5) 0  5px 6px 4px; /* outer HL */ 
+  text-shadow: rgba(68,68,68,0.5) -1px 0, rgba(68,68,68,0.3)  0 -1px, rgba(255,255,255,0.5) 0 1px, rgba(0,0,0,0.3) -1px -2px;
+}
+.metal {
+
+	text-align: center;
+  border-radius: .5em;
+  background-image: -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0)   6%, hsla(0,0%,100%, .1) 7.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,  0%,0) 0%, hsla(0,0%,  0%,0)   4%, hsla(0,0%,  0%,.03) 4.5%),
+    -webkit-repeating-linear-gradient(left, hsla(0,0%,100%,0) 0%, hsla(0,0%,100%,0) 1.2%, hsla(0,0%,100%,.15) 2.2%),
+    
+    linear-gradient(180deg, hsl(0,0%,78%)  0%, 
+    hsl(0,0%,90%) 47%, 
+    hsl(0,0%,78%) 53%,
+    hsl(0,0%,70%)100%);
+}
+
+.button {
+	border: 2px solid white;
+	border-radius: 3px;
+	display: inline-block;
+	font-size: 20px;
+}
+
+.button:active {
+	background-color: white;
+	color: black;
+}
+
+#login-button{
+	margin-top: 100px;
+}
+
+#speak-button{
+	margin-top: 100px;
+}
+
+.dialog {
+	height: 500px;
+	width: 60%;
+	margin: auto 0;
+	display: none;
+	position: absolute;
+}
+.dialog.active {
+	display: block;
+
+}
+
+#map-container{
+	width: 80%;
+	/*background-color: blue;*/
+	margin: 0 auto;
+	position: relative;
+	top: 5%;
+	border-radius: 50%;
+	border: #333333 solid 10px;
+	background: -webkit-radial-gradient(50%, 0%, 50% 5px, #aaa 0%, white 100%);
+	overflow: hidden;
+	z-index: 50;
+
+}
+
+#sweeper{
+	overflow: hidden;
+	height: 50%;
+	width: 50%;
+	background-image: url("../resource/imgs/scan.png");
+	background-size: 100%;
+	/*border-right: white solid 3px;*/
+	/*background-image: -webkit-gradient(
+		linear,
+		right top,
+		left top,
+		color-stop(0, rgba(255, 255, 255,1)),
+		color-stop(.9, rgba(255, 255, 255,0))
+		);*/
+	-webkit-animation-name: rotate;
+	-webkit-animation-duration: 2s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+	-webkit-transform-origin:100% 100%;
+	z-index: -1;
+	position: relative;
+	padding: 0;
+	margin: 0;
+	left: 0;
+
+}
+.blink {
+    -webkit-animation: blink 2s ease-in infinite alternate;
+}
+.selected {
+	-webkit-animation: selected 1.5s steps(5, start);
+}
+@-webkit-keyframes rotate{
+	from {
+		-webkit-transform: rotate(0deg);
+	}
+	to {
+		-webkit-transform: rotate(360deg);
+	}
+}
+
+@-webkit-keyframes blink {
+	from {
+		opacity: 1;
+	}
+    to {
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes selected {
+	0% {
+		opacity: 0;
+	}
+	10% {
+		opacity: 0;
+	}
+	11% {
+		opacity: 1;
+	}
+	20% {
+		opacity: 1;
+	}
+	21% {
+		opacity: 0;
+	}
+	30% {
+		opacity: 0;
+	}
+	31% {
+		opacity: 1;
+	}
+	40% {
+		opacity: 1;
+	}
+	41% {
+		opacity: 0;
+	}
+	50% {
+		opacity: 0;
+	}
+	51% {
+		opacity: 1;
+	}
+}

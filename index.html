@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Survival</title>
+	<link href='http://fonts.googleapis.com/css?family=Black+Ops+One' rel='stylesheet' type='text/css'>
+  <link rel="stylesheet" href="./css/jquery-ui-1.10.4.custom.css">
+  <link rel="stylesheet" href="./css/bootstrap.css">
+	<link rel="stylesheet" type="text/css" href="./css/style.css">
+	<meta http-equiv="ScreenOrientation" content="autoRotate:disabled"> 
+	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport' />
+	<meta name="apple-mobile-web-app-capable" content="yes" />
+	<script src="./extlib/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8" ></script>
+	<script src="./extlib/jquery-ui-1.10.4.custom.min.js"></script>
+	<script src="./extlib/hammer.js"></script>
+
+	<script src="./lib/ui.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div id="screen-container">
+		<div id="title-screen" class="screen active container">
+				<h1>Survial</h1>
+				<h4 class="blink">Tap screen to continue...</h4>
+		</div>
+		<div id="login-screen" class="screen">
+			<div class="container">
+				<div class="row">
+					<label class="col-md-6" for="team">Team name:</label><br>
+					<input class="col-md-6" type="text" name="team" id="team-input">
+				</div>
+				<div class="row">
+					<label class="col-md-6" for="player">Player name:</label><br>
+					<input class="col-md-6" type="text" name="player" id="player-input">
+				</div>
+				<div class="button" id="login-button">Login</div>
+			</div>
+		</div>
+		<div id="radar-screen" class="screen">
+			<div id="map-container">
+				<div id="map"></div>
+				<div id="sweeper"></div>
+			</div>
+			<div id="speak-button" class="button">Speak</div>
+		</div>
+		<!-- <div id="chat-screen" class="screen"></div> -->
+	</div>
+	<div id="dialog" title="Login Error">
+		<p id="dialog-text"></p>
+	</div>
+
+	<audio id="#audio"></audio>
+</body>
+</html>
