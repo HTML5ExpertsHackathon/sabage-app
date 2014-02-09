@@ -4,9 +4,15 @@
 
 $(document).ready(function(){
     locationM = new Location.manager();
+    SkywayM = new SkyWay.manager();
+    locationM.onposition = SkywayM.sendLocation;
+    SkywayM.dcCallback = locationM.setOtherMarker;
     UI.init();
 
-<<<<<<< HEAD
+    setInterval(function(){
+        var data = locationM.lastlocation;
+        SkywayM.sendLocation(data)
+    }, 1000)
     
     //LocationManager
 
@@ -25,15 +31,14 @@ $(document).ready(function(){
     //相手の位置を表示する
     // locationM.setOtherMarker(other);
     //SkyWayManager
-    var SkywayM = new SkyWay.manager();
 
     //SkyWayManagerを初期化
-    SkywayM.init(2,'yusuke3');
+    // SkywayM.init(2,'yusuke3');
 
     //接続を開始
-    SkywayM.setConnectionHandler(function(msg){
-        console.log(msg);
-    });
+    // SkywayM.setConnectionHandler(function(msg){
+    //     console.log(msg);
+    // });
 
     $('#sendLocation').on('click',function(e){
         e.preventDefault();
