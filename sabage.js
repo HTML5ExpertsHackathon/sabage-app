@@ -6,6 +6,7 @@ $(document).ready(function(){
     locationM = new Location.manager();
     UI.init();
 
+<<<<<<< HEAD
     
     //LocationManager
 
@@ -23,5 +24,19 @@ $(document).ready(function(){
 
     //相手の位置を表示する
     // locationM.setOtherMarker(other);
+    //SkyWayManager
+    var SkywayM = new SkyWay.manager();
 
+    //SkyWayManagerを初期化
+    SkywayM.init(2,'yusuke3');
+
+    //接続を開始
+    SkywayM.setConnectionHandler(function(msg){
+        console.log(msg);
+    });
+
+    $('#sendLocation').on('click',function(e){
+        e.preventDefault();
+        SkywayM.sendLocation('test');
+    });
 });
