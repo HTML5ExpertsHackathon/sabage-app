@@ -4,23 +4,19 @@
 
 $(document).ready(function(){
 
-    //LocationManager
-    var locationM = new Location.manager();
+    //SkyWayManager
+    var SkywayM = new SkyWay.manager();
 
-    //LocationManagerを初期化
-    locationM.init('#gmap');
+    //SkyWayManagerを初期化
+    SkywayM.init(2,'yusuke3');
 
-    //自分の位置を表示開始する
-    locationM.setMyMarker();
+    //接続を開始
+    SkywayM.setConnectionHandler(function(msg){
+        console.log(msg);
+    });
 
-
-    var other = {
-        markerObject: null,
-        latitude: 36.3005131,
-        longitude: 138.8473839
-    }
-
-    //相手の位置を表示する
-    locationM.setOtherMarker(other);
-
+    $('#sendLocation').on('click',function(e){
+        e.preventDefault();
+        SkywayM.sendLocation('test');
+    });
 });
