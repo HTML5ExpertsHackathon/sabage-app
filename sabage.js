@@ -3,7 +3,9 @@
  */
 
 $(document).ready(function(){
+    locationM = new Location.manager();
     UI.init();
+
     
     //LocationManager
 

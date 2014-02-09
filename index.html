@@ -11,7 +11,9 @@
 	<meta content='width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' name='viewport' />
 	<meta name="apple-mobile-web-app-capable" content="yes" />
 
-	<script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=true"></script>
+	<script type="text/javascript"
+		src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAFsey6ry0fspcqnTDQwcKDPxTOIOY--ec&sensor=true">
+	</script>
 	<script src="./extlib/jquery-2.1.0.min.js" type="text/javascript" charset="utf-8" ></script>
 	<script src="./extlib/jquery-ui-1.10.4.custom.min.js"></script>
 	<script src="./extlib/hammer.js"></script>
@@ -43,7 +45,10 @@
 			<div id="map-container">
 				<div id="gmap"></div>
 				<div id="sweeper"></div>
+				<div id="overlay"></div>
 			</div>
+			<div class="zoom zoom-in">+</div>
+			<div class="zoom zoom-out">-</div>
 			<div id="speak-button" class="button">Speak</div>
 		</div>
 		<!-- <div id="chat-screen" class="screen"></div> -->
@@ -54,7 +59,7 @@
 
 	<audio id="audio"></audio>
 	<audio id="type" src="./resource/sounds/type.wav" preload="auto"></audio>
-	<audio id="theme" src="./resource/sounds/theme.mp3" autoplay="true" loop preload="auto"></audio>
+	<audio id="theme" src="./resource/sounds/theme.mp3" loop preload="auto"></audio>
 	<audio id="confirm" src="./resource/sounds/confirm.mp3"></audio>
 	<audio id="start" src="./resource/sounds/start.mp3"></audio>
 </body>
