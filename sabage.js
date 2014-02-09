@@ -8,7 +8,7 @@ $(document).ready(function(){
     var SkywayM = new SkyWay.manager();
 
     //SkyWayManagerを初期化
-    SkywayM.init(2,'yusuke3');
+    SkywayM.init(1,'yusuke4');
 
     //接続を開始
     SkywayM.setConnectionHandler(function(msg){
@@ -19,4 +19,15 @@ $(document).ready(function(){
         e.preventDefault();
         SkywayM.sendLocation('test');
     });
+
+    $('#startTalk').on('click',function(e){
+        e.preventDefault();
+        SkywayM.startTalk();
+    });
+
+    $('#stopTalk').on('click',function(e){
+        e.preventDefault();
+        SkywayM.stopTalk();
+    });
+
 });
