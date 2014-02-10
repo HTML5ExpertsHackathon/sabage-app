@@ -40,8 +40,33 @@ $(document).ready(function(){
     //     console.log(msg);
     // });
 
-    $('#sendLocation').on('click',function(e){
+/*    $('#join').on('click',function(e){
         e.preventDefault();
-        SkywayM.sendLocation('test');
+        
+        //SkyWayManagerを初期化
+        SkywayM.init(1,$('#id').val());
+
+        //接続を開始
+        SkywayM.setConnectionHandler(function(msg){
+            console.log(msg);
+        });
+
+        $('#sendLocation').on('click',function(e){
+            e.preventDefault();
+            SkywayM.sendLocation('test');
+        });
+
+        $('#startTalk').on('click',function(e){
+            e.preventDefault();
+            SkywayM.startTalk();
+        });
+
+        $('#stopTalk').on('click',function(e){
+            e.preventDefault();
+            SkywayM.stopTalk();
+        });
+
     });
+*/
+
 });
