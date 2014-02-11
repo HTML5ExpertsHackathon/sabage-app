@@ -11,7 +11,7 @@ $(document).ready(function(){
     var docType = {
         firstLocation: 1,
         updateLocation: 2,
-        message: 2
+        message: 3
     }
 
     $('body').on('click', '#title-screen.active', function(){
@@ -32,22 +32,24 @@ $(document).ready(function(){
         }
 
         UI.setScreen($('#radar-screen'),function(){
-
+            //GoogleMapの初期化と自分の位置にマーカを描画
             locationM.init('#gmap');
             locationM.setMyMarker(function(myLocation){
 
                 $('#start')[0].play();
-                skywayM.init(team,player,function(peer){
 
+                //SkyWay関連の処理を開始
+                skywayM.init(team,player,function(peer){
+                    //init処理が完了したら全てのチームメンバに対して自分の位置情報を送信
                     myLocation.type = docType.firstLocation;
                     skywayM.sendMessage(myLocation,peer);
 
                 },function(err){
-
+                    //init処理にエラーが発生した場合の処理
                     UI.showError('Login Error', err);
 
                 },function (peer,msg){
-
+                    //チームメンバから位置情報を受信したらマーカーを描画
                     if(msg.type == docType.firstLocation){
                         locationM.updateOtherMarker(msg);
                         if(locationM.getMyLocation()){
@@ -59,8 +61,14 @@ $(document).ready(function(){
                         locationM.updateOtherMarker(msg);
                     }
 
+                },function (peer){
+                    //チームメンバが切断したらマーカーを削除
+                    console.log('切断しました:'+peer);
+                    locationM.deleteOtherMarker(peer);
+
                 });
 
+                //自分の位置情報が更新された場合は同じチームのメンバへマルチキャストする
                 locationM.updateMyMarker(function(myLocation){
                     myLocation.type = docType.updateLocation;
                     skywayM.sendMessage(myLocation);
@@ -79,6 +87,7 @@ $(document).ready(function(){
         } else {
             locationM.zoomOut();
         }
+
     });
 
     $('input').on('input', function(){
@@ -87,8 +96,21 @@ $(document).ready(function(){
 
     });
 
-    $('input').on('keyup',function(){
+    $('#speak-button').on('click', function(){
+        if(!skywayM.isSpeaking()){
+            skywayM.startSpeak();
+            $("#speak-button").text("stopSpeak");
 
+        }else{
+            skywayM.stopSpeak();
+            $("#speak-button").text("Speak");
+
+        }
+
+    });
+
+
+    $('input').on('keyup',function(){
         var c = this.selectionStart,
             r = /[^a-zA-Z0-9]/gi,
             v = $(this).val();
@@ -97,6 +119,7 @@ $(document).ready(function(){
             c--;
         }
         this.setSelectionRange(c, c);
+
     });
 
     $('#theme')[0].play();
