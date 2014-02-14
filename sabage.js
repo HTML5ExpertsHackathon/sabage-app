@@ -40,9 +40,16 @@ $(document).ready(function(){
 
                 //SkyWay関連の処理を開始
                 skywayM.init(team,player,function(peer){
-                    //init処理が完了したら全てのチームメンバに対して自分の位置情報を送信
-                    myLocation.type = docType.firstLocation;
+                    //init処理が完了したら全てのチームメンバに対して自分の位置情報を送信(STEP1)
+                    //myLocation.type = docType.firstLocation;
+
+                    myLocation.type = docType.updateLocation;
                     skywayM.sendMessage(myLocation,peer);
+                    var _timer = setInterval(function(){
+                        myLocation.type = docType.updateLocation;
+                        skywayM.sendMessage(myLocation,peer);
+                    },5000);
+                    peer.timer = _timer;
 
                 },function(err){
                     //init処理にエラーが発生した場合の処理
@@ -50,30 +57,36 @@ $(document).ready(function(){
 
                 },function (peer,msg){
                     //チームメンバから位置情報を受信したらマーカーを描画
-                    if(msg.type == docType.firstLocation){
+                    locationM.updateOtherMarker(msg);
+
+                    /*if(msg.type == docType.firstLocation){
                         locationM.updateOtherMarker(msg);
                         if(locationM.getMyLocation()){
                             var _msg = locationM.getMyLocation();
                             _msg.type = docType.updateLocation;
-                            skywayM.sendMessage(_msg,peer);
+                                skywayM.sendMessage(_msg,peer);
+
                         }
                     }else if(msg.type == docType.updateLocation){
                         locationM.updateOtherMarker(msg);
-                    }
+                    }*/
 
                 },function (peer){
                     //チームメンバが切断したらマーカーを削除
                     console.log('切断しました:'+peer);
                     locationM.deleteOtherMarker(peer);
 
+                    //タイマーも解除
+                    clearInterval(peer.timer);
+
                 });
 
                 //自分の位置情報が更新された場合は同じチームのメンバへマルチキャストする
-                locationM.updateMyMarker(function(myLocation){
+                /*locationM.updateMyMarker(function(myLocation){
                     myLocation.type = docType.updateLocation;
                     skywayM.sendMessage(myLocation);
 
-                });
+                });*/
 
             });
 

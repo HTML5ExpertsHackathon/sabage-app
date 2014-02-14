@@ -203,10 +203,10 @@ input {
 }
 @-webkit-keyframes rotate{
 	from {
-		-webkit-transform: rotate(0deg);
+		-webkit-transform: rotate3d(0,0,1,0deg);
 	}
 	to {
-		-webkit-transform: rotate(360deg);
+		-webkit-transform: rotate3d(0,0,1,360deg);
 	}
 }
 
