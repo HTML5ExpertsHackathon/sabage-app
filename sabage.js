@@ -134,7 +134,4 @@ $(document).ready(function(){
         this.setSelectionRange(c, c);
 
     });
-
-    $('#theme')[0].play();
-
 });
