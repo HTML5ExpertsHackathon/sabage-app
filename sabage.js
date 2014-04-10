@@ -16,7 +16,6 @@ $(document).ready(function(){
 
     $('body').on('click', '#title-screen.active', function(){
         $('.blink').removeClass('blink').addClass('selected');
-        $('#confirm')[0].play();
         $('#theme').animate({volume:0}, 1000);
         setTimeout(function(){
                 UI.setScreen($('#login-screen'));
@@ -35,8 +34,6 @@ $(document).ready(function(){
             //GoogleMapの初期化と自分の位置にマーカを描画
             locationM.init('#gmap');
             locationM.setMyMarker(function(myLocation){
-
-                $('#start')[0].play();
 
                 //SkyWay関連の処理を開始
                 skywayM.init(team,player,function(peer){
